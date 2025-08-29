@@ -28,11 +28,12 @@ A comprehensive web application designed to educate employees, provide real-time
 - **Infographics & Cheat Sheets**: Quick reference materials for common security topics
 
 ### 4. Contact Center
-- **Security Query Form**: Comprehensive contact form with Formspree integration
-- **Emergency Hotline**: 24/7 security support with immediate contact options
-- **Office Location**: Interactive map with directions and contact information
-- **Security FAQ Chatbot**: Intelligent assistant for common security questions
-- **Live Chat Support**: Integrated support during business hours
+
+- **Security Request Portal**: Comprehensive online form with Formspree integration for structured security inquiries.
+- **Emergency Response Hotline**: 24/7 dedicated line for immediate escalation of critical security incidents.
+- **Corporate Location & Access**: Interactive mapping tool with office coordinates, directions, and verified contact details.
+- **Security FAQ Chatbot**: AI-driven chatbot for addressing frequently raised security concerns.
+- **Live Chat Support**: Integrated real-time assistance available during standard operating hours.
 
 ### 5. Incident Reporting
 - **Advanced Report Form**: Comprehensive incident submission with priority selection
