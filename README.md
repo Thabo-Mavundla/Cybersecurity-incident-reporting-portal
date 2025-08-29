@@ -1,6 +1,6 @@
 # Cybersecurity Awareness & Incident Response Portal
 
-🛡️ **Live Demo**: [View Portal](https://yourusername.github.io/cybersecurity-portal)
+🛡️ **Live Demo**: [View Portal](https://thabo-mavundla.github.io/Cybersecurity-incident-reporting-portal/index.html)
 
 A comprehensive web application designed to educate employees, provide real-time threat alerts, and streamline the process of reporting and handling security incidents. This professional cybersecurity portal features advanced contact management, incident reporting, and interactive threat intelligence dashboard.
 
