@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Awareness & Incident Response Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- CDN Links for Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    
+    <!-- Leaflet.js for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- LottieFiles and GSAP for Animations -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Cyberspace</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="threat-intelligence.html" class="nav-link">Threat Intelligence</a>
+                </li>
+                <li class="nav-item">
+                    <a href="policies.html" class="nav-link">Policies & Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="training.html" class="nav-link">Training</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="report-incident.html" class="nav-link report-incident-nav">🚨 Report Incident</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section cybersecurity-hero">
+            <div class="hero-background-overlay"></div>
+            <div class="container">
+                <div class="hero-grid">
+                    <!-- Hero Content -->
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="fas fa-shield-check"></i>
+                            <span>Cybersecurity Excellence</span>
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="hero-title-main">Stay Safe.</span>
+                            <span class="hero-title-accent">Stay Secure.</span>
+                        </h1>
+                        <p class="hero-description">
+                            Empowering your organization with comprehensive cybersecurity education, 
+                            real-time threat intelligence, and streamlined incident response capabilities.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="training.html" class="btn btn-primary hero-cta-primary">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Start Cybersecurity Training</span>
+                            </a>
+                            <a href="threat-intelligence.html" class="btn btn-secondary hero-cta-secondary">
+                                <i class="fas fa-search"></i>
+                                <span>Learn How to Spot Threats</span>
+                            </a>
+                        </div>
+                        
+                        <!-- Emergency Report Incident Button -->
+                        <div class="emergency-report-section">
+                            <a href="report-incident.html" class="btn btn-emergency report-incident-btn">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>🚨 Report Security Incident</span>
+                                <div class="emergency-pulse"></div>
+                            </a>
+                            <p class="emergency-text">Immediate response required? Click above for emergency reporting</p>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number uptime-stat" data-target="99.9">0</span>
+                                <span class="stat-label">Uptime</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number monitoring-stat" data-target="24">0</span>
+                                <span class="stat-label">Monitoring</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number threats-stat" data-target="10000">0</span>
+                                <span class="stat-label">Threats Blocked</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero Animation -->
+                    <div class="hero-visual">
+                        <div class="cybersecurity-animation">
+                            <!-- LottieFiles Cybersecurity Animation -->
+                            <lottie-player
+                                src="https://assets2.lottiefiles.com/packages/lf20_kuhijlvz.json"
+                                background="transparent"
+                                speed="1"
+                                style="width: 100%; height: 400px;"
+                                loop
+                                autoplay
+                                class="cybersecurity-lottie">
+                            </lottie-player>
+                            <!-- Fallback Animation -->
+                            <div class="fallback-animation">
+                                <div class="shield-container">
+                                    <i class="fas fa-shield-alt shield-icon"></i>
+                                    <div class="pulse-ring"></div>
+                                    <div class="pulse-ring pulse-ring-delay-1"></div>
+                                    <div class="pulse-ring pulse-ring-delay-2"></div>
+                                </div>
+                                <div class="floating-elements">
+                                    <i class="fas fa-lock floating-icon icon-1"></i>
+                                    <i class="fas fa-key floating-icon icon-2"></i>
+                                    <i class="fas fa-eye floating-icon icon-3"></i>
+                                    <i class="fas fa-bug floating-icon icon-4"></i>
+                                    <i class="fas fa-virus floating-icon icon-5"></i>
+                                    <i class="fas fa-user-secret floating-icon icon-6"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Background Pattern -->
+            <div class="hero-pattern"></div>
+        </section>
+
+        <!-- Quick Links Section -->
+        <section class="quick-links-section" style="padding: var(--spacing-2xl) 0; background: var(--secondary-bg);">
+            <div class="container">
+                <h2 class="section-title">Quick Access</h2>
+                <div class="quick-links-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg);">
+                    <a href="about.html" class="quick-link-card" style="background: var(--tertiary-bg); padding: var(--spacing-xl); border-radius: var(--border-radius-lg); text-decoration: none; color: inherit; transition: var(--transition); border: 2px solid transparent; display: block;">
+                        <div class="quick-link-icon" style="width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); font-size: var(--font-size-xl);">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 style="text-align: center; margin-bottom: var(--spacing-md); color: var(--accent-primary);">About Our Team</h3>
+                        <p style="text-align: center; color: var(--text-secondary);">Learn about our cybersecurity commitment, team profiles, and security initiatives timeline.</p>
+                    </a>
+                    
+                    <a href="threat-intelligence.html" class="quick-link-card" style="background: var(--tertiary-bg); padding: var(--spacing-xl); border-radius: var(--border-radius-lg); text-decoration: none; color: inherit; transition: var(--transition); border: 2px solid transparent; display: block;">
+                        <div class="quick-link-icon" style="width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); font-size: var(--font-size-xl);">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 style="text-align: center; margin-bottom: var(--spacing-md); color: var(--accent-primary);">Threat Intelligence</h3>
+                        <p style="text-align: center; color: var(--text-secondary);">View live threat alerts, security bulletins, and interactive global cyberattack trends.</p>
+                    </a>
+                    
+                    <a href="policies.html" class="quick-link-card" style="background: var(--tertiary-bg); padding: var(--spacing-xl); border-radius: var(--border-radius-lg); text-decoration: none; color: inherit; transition: var(--transition); border: 2px solid transparent; display: block;">
+                        <div class="quick-link-icon" style="width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); font-size: var(--font-size-xl);">
+                            <i class="fas fa-file-shield"></i>
+                        </div>
+                        <h3 style="text-align: center; margin-bottom: var(--spacing-md); color: var(--accent-primary);">Policies & Resources</h3>
+                        <p style="text-align: center; color: var(--text-secondary);">Access downloadable policies, best practice guides, and security cheat sheets.</p>
+                    </a>
+                    
+                    <a href="training.html" class="quick-link-card" style="background: var(--tertiary-bg); padding: var(--spacing-xl); border-radius: var(--border-radius-lg); text-decoration: none; color: inherit; transition: var(--transition); border: 2px solid transparent; display: block;">
+                        <div class="quick-link-icon" style="width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); font-size: var(--font-size-xl);">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 style="text-align: center; margin-bottom: var(--spacing-md); color: var(--accent-primary);">Training</h3>
+                        <p style="text-align: center; color: var(--text-secondary);">Interactive cybersecurity training modules, quizzes, and leaderboards.</p>
+                    </a>
+                    
+                    <a href="report-incident.html" class="quick-link-card report-incident-card" style="background: var(--tertiary-bg); padding: var(--spacing-xl); border-radius: var(--border-radius-lg); text-decoration: none; color: inherit; transition: var(--transition); border: 2px solid transparent; display: block;">
+                        <div class="quick-link-icon" style="width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); font-size: var(--font-size-xl);">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 style="text-align: center; margin-bottom: var(--spacing-md); color: var(--accent-primary);">🚨 Report Incident</h3>
+                        <p style="text-align: center; color: var(--text-secondary);">Submit security incidents with emergency contacts and automated guidance.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cybersecurity Portal</h4>
+                    <p>Protecting our organization through education, awareness, and rapid incident response.</p>
+                    <div class="social-media">
+                        <h5>Follow Us</h5>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                        <li><a href="training.html">Training</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="report-incident.html">Report Incident</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="policies.html#security-policies">Security Policies</a></li>
+                        <li><a href="policies.html#best-practices">Best Practices</a></li>
+                        <li><a href="policies.html#training">Security Training</a></li>
+                        <li><a href="threat-intelligence.html#alerts">Threat Alerts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for security updates and alerts</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <div class="newsletter-input-group">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="contact-info">
+                        <p><strong>Emergency:</strong> +1 (555) 123-SECURITY</p>
+                        <p><strong>Email:</strong> security@company.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cybersecurity Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

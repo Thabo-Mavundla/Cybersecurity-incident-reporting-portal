@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Integration Test</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1f2e;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #2a3142;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #3a4556;
+        }
+        .test-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #16213e;
+            border-radius: 8px;
+        }
+        .pass { border-left: 4px solid #27ae60; }
+        .fail { border-left: 4px solid #ff4757; }
+        .pending { border-left: 4px solid #ffa502; }
+        h1 { color: #00d4ff; text-align: center; }
+        h2 { color: #00d4ff; }
+        button {
+            background: #00d4ff;
+            color: #1a1f2e;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 0.5rem;
+        }
+        button:hover {
+            background: #0099cc;
+        }
+        .status {
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Training Integration Test</h1>
+        
+        <div class="test-item pending">
+            <h2>1. Firebase Integration</h2>
+            <p>Testing if Firebase functions are available...</p>
+            <button onclick="testFirebase()">Test Firebase</button>
+            <span id="firebase-status" class="status">Pending</span>
+        </div>
+
+        <div class="test-item pending">
+            <h2>2. Training Page Elements</h2>
+            <p>Testing if training page elements exist...</p>
+            <button onclick="testTrainingPage()">Test Training Page</button>
+            <span id="training-page-status" class="status">Pending</span>
+        </div>
+
+        <div class="test-item pending">
+            <h2>3. Training Functions</h2>
+            <p>Testing if training JavaScript functions are available...</p>
+            <button onclick="testTrainingFunctions()">Test Functions</button>
+            <span id="functions-status" class="status">Pending</span>
+        </div>
+
+        <div class="test-item pending">
+            <h2>4. Navigation Links</h2>
+            <p>Testing if training links are properly added to navigation...</p>
+            <button onclick="testNavigation()">Test Navigation</button>
+            <span id="nav-status" class="status">Pending</span>
+        </div>
+
+        <div class="test-item pending">
+            <h2>5. CSS Styles</h2>
+            <p>Testing if training CSS styles are loaded...</p>
+            <button onclick="testCSS()">Test CSS</button>
+            <span id="css-status" class="status">Pending</span>
+        </div>
+
+        <div style="margin-top: 2rem; text-align: center;">
+            <button onclick="runAllTests()" style="background: #27ae60; font-size: 1.1rem; padding: 1rem 2rem;">
+                🚀 Run All Tests
+            </button>
+        </div>
+    </div>
+
+    <!-- Load Firebase and main scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <script src="firebase.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        function updateStatus(id, status, message = '') {
+            const element = document.getElementById(id);
+            const container = element.closest('.test-item');
+            
+            container.className = 'test-item ' + status;
+            element.textContent = status === 'pass' ? '✅ Pass' : 
+                                 status === 'fail' ? '❌ Fail' : '⏳ Pending';
+            if (message) {
+                element.textContent += ' - ' + message;
+            }
+        }
+
+        function testFirebase() {
+            try {
+                if (typeof firebase !== 'undefined' && window.firebaseFunctions) {
+                    updateStatus('firebase-status', 'pass', 'Firebase and functions loaded');
+                } else {
+                    updateStatus('firebase-status', 'fail', 'Firebase not properly loaded');
+                }
+            } catch (error) {
+                updateStatus('firebase-status', 'fail', 'Error: ' + error.message);
+            }
+        }
+
+        function testTrainingPage() {
+            try {
+                // Check if training.html exists by trying to fetch it
+                fetch('training.html')
+                    .then(response => {
+                        if (response.ok) {
+                            updateStatus('training-page-status', 'pass', 'training.html exists');
+                        } else {
+                            updateStatus('training-page-status', 'fail', 'training.html not found');
+                        }
+                    })
+                    .catch(error => {
+                        updateStatus('training-page-status', 'fail', 'Error checking page');
+                    });
+            } catch (error) {
+                updateStatus('training-page-status', 'fail', 'Error: ' + error.message);
+            }
+        }
+
+        function testTrainingFunctions() {
+            try {
+                const requiredFunctions = [
+                    'initializeTraining',
+                    'openQuizModal',
+                    'closeQuizModal'
+                ];
+                
+                const missing = requiredFunctions.filter(fn => typeof window[fn] !== 'function');
+                
+                if (missing.length === 0) {
+                    updateStatus('functions-status', 'pass', 'All training functions available');
+                } else {
+                    updateStatus('functions-status', 'fail', 'Missing: ' + missing.join(', '));
+                }
+            } catch (error) {
+                updateStatus('functions-status', 'fail', 'Error: ' + error.message);
+            }
+        }
+
+        function testNavigation() {
+            try {
+                // Check if navigation links exist in the main pages
+                const pages = ['index.html', 'about.html', 'policies.html'];
+                let tested = 0;
+                let passed = 0;
+
+                pages.forEach(page => {
+                    fetch(page)
+                        .then(response => response.text())
+                        .then(html => {
+                            tested++;
+                            if (html.includes('training.html')) {
+                                passed++;
+                            }
+                            
+                            if (tested === pages.length) {
+                                if (passed === pages.length) {
+                                    updateStatus('nav-status', 'pass', 'Training links added to all pages');
+                                } else {
+                                    updateStatus('nav-status', 'fail', `Links missing in ${pages.length - passed} pages`);
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            tested++;
+                            if (tested === pages.length) {
+                                updateStatus('nav-status', 'fail', 'Error checking navigation');
+                            }
+                        });
+                });
+            } catch (error) {
+                updateStatus('nav-status', 'fail', 'Error: ' + error.message);
+            }
+        }
+
+        function testCSS() {
+            try {
+                // Check if styles.css exists and contains training-related styles
+                fetch('styles.css')
+                    .then(response => response.text())
+                    .then(css => {
+                        const trainingStyles = [
+                            '.training-card',
+                            '.quiz-modal',
+                            '.leaderboard'
+                        ];
+                        
+                        const missing = trainingStyles.filter(style => !css.includes(style));
+                        
+                        if (missing.length === 0) {
+                            updateStatus('css-status', 'pass', 'Training CSS styles found');
+                        } else {
+                            updateStatus('css-status', 'fail', 'Missing styles: ' + missing.join(', '));
+                        }
+                    })
+                    .catch(error => {
+                        updateStatus('css-status', 'fail', 'Error checking CSS');
+                    });
+            } catch (error) {
+                updateStatus('css-status', 'fail', 'Error: ' + error.message);
+            }
+        }
+
+        function runAllTests() {
+            testFirebase();
+            setTimeout(testTrainingPage, 100);
+            setTimeout(testTrainingFunctions, 200);
+            setTimeout(testNavigation, 300);
+            setTimeout(testCSS, 400);
+        }
+    </script>
+</body>
+</html>

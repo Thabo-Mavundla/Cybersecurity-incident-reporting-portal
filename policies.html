@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policies & Resources - Cyberspace Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- CDN Links for Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    
+    <!-- Leaflet.js for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Firebase -->
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+    
+    <!-- FullCalendar for Events -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Cyberspace Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="threat-intelligence.html" class="nav-link">Threat Intelligence</a>
+                </li>
+                <li class="nav-item">
+                    <a href="policies.html" class="nav-link active">Policies & Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="training.html" class="nav-link">Training</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="report-incident.html" class="nav-link report-incident-nav">🚨 Report Incident</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Policies & Resources Section -->
+        <section class="policies-section">
+            <div class="container">
+                <h1 class="section-title">Policies & Resources</h1>
+                
+                <!-- Downloadable Policies -->
+                <div class="policies-grid">
+                    <h3>Cybersecurity Policies</h3>
+                    <div class="policy-categories">
+                        <div class="policy-category">
+                            <h4><i class="fas fa-user-shield"></i> Access Control Policies</h4>
+                            <div class="policy-items">
+                                <div class="policy-item">
+                                    <span class="policy-name">Password Policy</span>
+                                    <span class="policy-size">2.1 MB</span>
+                                    <button class="btn btn-sm" onclick="downloadPolicy('password-policy.pdf')">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                                <div class="policy-item">
+                                    <span class="policy-name">Multi-Factor Authentication</span>
+                                    <span class="policy-size">1.8 MB</span>
+                                    <button class="btn btn-sm" onclick="downloadPolicy('mfa-policy.pdf')">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                                <div class="policy-item">
+                                    <span class="policy-name">Privileged Access Management</span>
+                                    <span class="policy-size">3.2 MB</span>
+                                    <button class="btn btn-sm" onclick="downloadPolicy('pam-policy.pdf')">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="policy-category">
+                            <h4><i class="fas fa-database"></i> Data Protection Policies</h4>
+                            <div class="policy-items">
+                                <div class="policy-item">
+                                    <span class="policy-name">Data Classification</span>
+                                    <span class="policy-size">2.5 MB</span>
+                                    <button class="btn btn-sm" onclick="downloadPolicy('data-classification.pdf')">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                                <div class="policy-item">
+                                    <span class="policy-name">Data Retention & Disposal</span>
+                                    <span class="policy-size">1.9 MB</span>
+                                    <button class="btn btn-sm" onclick="downloadPolicy('data-retention.pdf')">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                                <div class="policy-item">
+                                    <span class="policy-name">Encryption Standards</span>
+                                    <span class="policy-size">2.7 MB</span>
+                                    <button class="btn btn-sm" onclick="downloadPolicy('encryption-standards.pdf')">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="policy-category">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Incident Response</h4>
+                            <div class="policy-items">
+                                <div class="policy-item">
+                                    <span class="policy-name">Incident Response Plan</span>
+                                    <span class="policy-size">4.1 MB</span>
+                                    <button class="btn btn-sm" onclick="downloadPolicy('incident-response.pdf')">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                                <div class="policy-item">
+                                    <span class="policy-name">Business Continuity Plan</span>
+                                    <span class="policy-size">3.8 MB</span>
+                                    <button class="btn btn-sm" onclick="downloadPolicy('business-continuity.pdf')">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Best Practice Guides -->
+                <div class="best-practices">
+                    <h3>Best Practice Guides</h3>
+                    <div class="guides-grid">
+                        <div class="guide-card">
+                            <div class="guide-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4>Email Security</h4>
+                            <p>Learn to identify and handle phishing attempts, secure email practices, and safe attachment handling.</p>
+                            <button class="btn btn-outline" onclick="downloadGuide('email-security-guide.pdf')">Download Guide</button>
+                        </div>
+                        <div class="guide-card">
+                            <div class="guide-icon">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <h4>Secure Remote Work</h4>
+                            <p>Best practices for working securely from home, VPN usage, and securing home networks.</p>
+                            <button class="btn btn-outline" onclick="downloadGuide('remote-work-guide.pdf')">Download Guide</button>
+                        </div>
+                        <div class="guide-card">
+                            <div class="guide-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4>Mobile Device Security</h4>
+                            <p>Securing smartphones and tablets, app security, and mobile threat awareness.</p>
+                            <button class="btn btn-outline" onclick="downloadGuide('mobile-security-guide.pdf')">Download Guide</button>
+                        </div>
+                        <div class="guide-card">
+                            <div class="guide-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h4>Cloud Security</h4>
+                            <p>Safe cloud service usage, data protection in cloud environments, and access controls.</p>
+                            <button class="btn btn-outline" onclick="downloadGuide('cloud-security-guide.pdf')">Download Guide</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infographics and Cheat Sheets -->
+                <div class="infographics">
+                    <h3>Quick Reference & Infographics</h3>
+                    <div class="infographic-grid">
+                        <div class="infographic-item">
+                            <div class="infographic-preview">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h4>Password Strength Checker</h4>
+                            <p>Visual guide to creating strong passwords</p>
+                            <button class="btn btn-sm" onclick="downloadInfographic('password-strength.png')">Download PNG</button>
+                        </div>
+                        <div class="infographic-item">
+                            <div class="infographic-preview">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <h4>Phishing Red Flags</h4>
+                            <p>Quick reference for identifying suspicious emails</p>
+                            <button class="btn btn-sm" onclick="downloadInfographic('phishing-red-flags.png')">Download PNG</button>
+                        </div>
+                        <div class="infographic-item">
+                            <div class="infographic-preview">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Incident Response Steps</h4>
+                            <p>Emergency response flowchart</p>
+                            <button class="btn btn-sm" onclick="downloadInfographic('incident-response-steps.png')">Download PNG</button>
+                        </div>
+                        <div class="infographic-item">
+                            <div class="infographic-preview">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h4>Data Classification Guide</h4>
+                            <p>Color-coded data sensitivity levels</p>
+                            <button class="btn btn-sm" onclick="downloadInfographic('data-classification.png')">Download PNG</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dynamic Resource Library (Team mate 2 Integration) -->
+                <div class="resource-library-section">
+                    <div class="resource-header">
+                        <h3><i class="fas fa-book-open"></i> Dynamic Resource Library</h3>
+                        <p>Browse and download the latest security resources dynamically updated by our team</p>
+                    </div>
+                    
+                    <!-- Resource Filters -->
+                    <div class="resource-filters">
+                        <button class="filter-btn active" data-filter="all">All Resources</button>
+                        <button class="filter-btn" data-filter="PDF">PDF Documents</button>
+                        <button class="filter-btn" data-filter="Video">Video Tutorials</button>
+                        <button class="filter-btn" data-filter="Tool">Security Tools</button>
+                        <button class="filter-btn" data-filter="Guide">Guides</button>
+                        <button class="filter-btn" data-filter="Cheatsheet">Cheat Sheets</button>
+                        <button class="filter-btn" data-filter="Cybersecurity_policies">Policies</button>
+                        <button class="filter-btn" data-filter="Template">Templates</button>
+                    </div>
+                    
+                    <!-- Dynamic Resource Cards -->
+                    <div id="resource-cards-container" class="resource-cards">
+                        <div class="loader">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading security resources...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Security Events Calendar -->
+        <section class="events-section">
+            <div class="container">
+                <div class="events-header">
+                    <h2><i class="fas fa-calendar-alt"></i> Upcoming Security Events & Training</h2>
+                    <p>Stay updated with security training sessions, awareness campaigns, and important events</p>
+                    
+                    <!-- Add Event Button -->
+                    <div class="calendar-actions">
+                        <button id="addEventBtn" class="btn btn-primary" onclick="openAddEventModal()">
+                            <i class="fas fa-plus"></i> Add New Event
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="calendar" class="events-calendar">
+                    <!-- FullCalendar will render here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Event Modal -->
+    <div id="addEventModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-calendar-plus"></i> Add New Security Event</h3>
+                <button class="modal-close" onclick="closeAddEventModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addEventForm">
+                    <div class="form-group">
+                        <label for="eventTitle">Event Title *</label>
+                        <input type="text" id="eventTitle" name="eventTitle" required placeholder="e.g., Cybersecurity Training Session">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventDescription">Description</label>
+                        <textarea id="eventDescription" name="eventDescription" rows="3" placeholder="Brief description of the event..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventDate">Date *</label>
+                            <input type="date" id="eventDate" name="eventDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventTime">Time</label>
+                            <input type="time" id="eventTime" name="eventTime">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventType">Event Type</label>
+                            <select id="eventType" name="eventType">
+                                <option value="training">Security Training</option>
+                                <option value="drill">Security Drill</option>
+                                <option value="meeting">Security Meeting</option>
+                                <option value="assessment">Security Assessment</option>
+                                <option value="awareness">Awareness Campaign</option>
+                                <option value="audit">Security Audit</option>
+                                <option value="general">General Event</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventPriority">Priority</label>
+                            <select id="eventPriority" name="eventPriority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                                <option value="critical">Critical</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeAddEventModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Add Event
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cybersecurity Portal</h4>
+                    <p>Protecting our organization through education, awareness, and rapid incident response.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="report-incident.html">Report Incident</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Security Team: cyberspace@company.com</p>
+                    <p>Emergency: +27 (123) 456-SECURITY</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cyberspace Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="firebase.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

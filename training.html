@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training & Awareness - Cyberspace Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- CDN Links for Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    
+    <!-- Leaflet.js for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Cyberspace Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="threat-intelligence.html" class="nav-link">Threat Intelligence</a>
+                </li>
+                <li class="nav-item">
+                    <a href="policies.html" class="nav-link">Policies & Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="training.html" class="nav-link active">Training</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="report-incident.html" class="nav-link report-incident-nav">🚨 Report Incident</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section training-hero">
+            <div class="hero-background"></div>
+            <div class="hero-content" style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <h1 class="hero-title">Security Training & Awareness</h1>
+                <p class="hero-text">
+                    Access comprehensive cybersecurity insights, resources, and educational content to stay informed about the latest threats and best practices.
+                </p>
+                <a href="#training-modules" class="hero-button">
+                    <i class="fas fa-graduation-cap"></i>
+                    Explore Security Resources
+                </a>
+            </div>
+        </section>
+
+        <!-- About Training Section -->
+        <section class="training-about-section">
+            <div class="container">
+                <div class="section-grid" style="justify-content: center; text-align: center;">
+                    <div class="content-column" style="max-width: 800px; margin: 0 auto;">
+                        <h2 class="section-title">Why Cybersecurity Awareness Matters</h2>
+                        <p class="section-description">
+                            Stay informed about the latest cybersecurity threats and best practices. Access curated insights, 
+                            educational resources, and expert guidance to strengthen your security knowledge.
+                        </p>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-shield-virus feature-icon"></i>
+                                <h3>Threat Insights</h3>
+                                <p>Access the latest information about phishing, malware, and social engineering attacks.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-brain feature-icon"></i>
+                                <h3>Security Knowledge</h3>
+                                <p>Learn from expert resources and develop security-conscious decision-making skills.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-users-shield feature-icon"></i>
+                                <h3>Best Practices</h3>
+                                <p>Discover proven cybersecurity practices and implementation guidelines.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-trophy feature-icon"></i>
+                                <h3>Assessment Tools</h3>
+                                <p>Test your knowledge with our comprehensive cybersecurity quiz assessments.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="visual-column" style="display: flex; justify-content: center; margin-top: 3rem;">
+                        <div class="training-stats" style="justify-content: center;">
+                            <div class="stat-card">
+                                <i class="fas fa-users"></i>
+                                <div class="stat-number" data-target="10000">0</div>
+                                <div class="stat-label">Resources Available</div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div class="stat-number" data-target="25">0</div>
+                                <div class="stat-label">Learning Topics</div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-chart-line"></i>
+                                <div class="stat-number" data-target="87">0</div>
+                                <div class="stat-label">Knowledge Coverage %</div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-shield-check"></i>
+                                <div class="stat-number" data-target="95">0</div>
+                                <div class="stat-label">Security Awareness</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Training Dashboard Section -->
+        <section id="training-modules" class="training-dashboard-section">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2><i class="fas fa-lightbulb"></i> Security Insights & Resources</h2>
+                    <p>Explore cybersecurity insights, educational resources, and knowledge assessments</p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="training-modules-loading" class="loading-container" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Loading training modules...</p>
+                </div>
+
+                <!-- Training Cards Grid -->
+                <div id="training-cards-grid" class="training-grid">
+                    <!-- Training cards will be dynamically loaded here by JavaScript -->
+                </div>
+
+                <!-- Error State -->
+                <div id="training-modules-error" class="error-container" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Failed to load training modules. Please try again later.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section class="leaderboard-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-trophy"></i> Training Leaderboard</h2>
+                    <p>See how you rank against your colleagues in cybersecurity knowledge</p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="leaderboard-loading" class="loading-container" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Loading leaderboard...</p>
+                </div>
+
+                <!-- Leaderboard Table -->
+                <div class="leaderboard-container">
+                    <div class="table-wrapper">
+                        <table class="leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th><i class="fas fa-medal"></i> Rank</th>
+                                    <th><i class="fas fa-user"></i> Name</th>
+                                    <th><i class="fas fa-building"></i> Department</th>
+                                    <th><i class="fas fa-star"></i> Score</th>
+                                    <th><i class="fas fa-check-circle"></i> Completion</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard-content">
+                                <!-- Leaderboard data will be inserted here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Error State -->
+                    <div id="leaderboard-error" class="error-container" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Failed to load leaderboard. Please try again later.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Modal -->
+        <div id="quiz-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3 id="quiz-title" class="modal-title">
+                        <i class="fas fa-question-circle"></i>
+                        Cybersecurity Quiz
+                    </h3>
+                    <button id="close-quiz-modal-btn" class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="quiz-question-container" class="quiz-content">
+                        <!-- Questions will be loaded here -->
+                    </div>
+                    <div id="quiz-feedback" class="quiz-feedback" style="display: none;">
+                        <!-- Quiz results will be shown here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="prev-question-btn" class="btn btn-secondary" style="display: none;">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button id="next-question-btn" class="btn btn-primary">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button id="submit-quiz-btn" class="btn btn-success" style="display: none;">
+                        <i class="fas fa-check"></i> Submit Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module Detail Modal -->
+        <div id="module-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3 id="module-title" class="modal-title">
+                        <i class="fas fa-book-open"></i>
+                        Training Module
+                    </h3>
+                    <button id="close-module-modal-btn" class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="module-description" class="module-content">
+                        <!-- Module content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cybersecurity Portal</h4>
+                    <p>Protecting our organization through education, awareness, and rapid incident response.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                        <li><a href="training.html">Training</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="report-incident.html">Report Incident</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Security Team: cyberspace@company.com</p>
+                    <p>Emergency: +27 (123) 456-SECURITY</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cyberspace Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="firebase.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Intelligence - Cyberspace Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- CDN Links for Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    
+    <!-- Leaflet.js for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Cyberspace Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="threat-intelligence.html" class="nav-link active">Threat Intelligence</a>
+                </li>
+                <li class="nav-item">
+                    <a href="policies.html" class="nav-link">Policies & Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="training.html" class="nav-link">Training</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="report-incident.html" class="nav-link report-incident-nav">🚨 Report Incident</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Threat Intelligence Section -->
+        <section class="threat-section">
+            <div class="container">
+                <h1 class="section-title">Threat Intelligence Dashboard</h1>
+                
+                <!-- Live Threat Alerts -->
+                <div class="threat-alerts">
+                    <h3>Live Threat Alerts</h3>
+                    <div class="alerts-container">
+                        <div class="alert-item critical">
+                            <div class="alert-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h4>Critical: New Ransomware Campaign Detected</h4>
+                                <p>Advanced persistent threat targeting financial institutions globally.</p>
+                                <span class="alert-time">2 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="alert-item high">
+                            <div class="alert-icon">
+                                <i class="fas fa-virus"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h4>High: Phishing Campaign Surge</h4>
+                                <p>Increased phishing activity targeting corporate email accounts.</p>
+                                <span class="alert-time">15 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="alert-item medium">
+                            <div class="alert-icon">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h4>Medium: Software Vulnerability Disclosed</h4>
+                                <p>New CVE published affecting widely-used enterprise software.</p>
+                                <span class="alert-time">1 hour ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline" onclick="loadMoreAlerts()">Load More Alerts</button>
+                </div>
+
+                <!-- Weekly Security Bulletins -->
+                <div class="security-bulletins">
+                    <h3>Weekly Security Bulletins</h3>
+                    <div class="bulletins-grid">
+                        <div class="bulletin-card">
+                            <div class="bulletin-header">
+                                <h4>Week of August 19-25, 2025</h4>
+                                <span class="bulletin-status new">New</span>
+                            </div>
+                            <ul class="bulletin-highlights">
+                                <li>Emerging AI-powered attack vectors</li>
+                                <li>Supply chain security incidents</li>
+                                <li>Updated threat actor profiles</li>
+                            </ul>
+                            <button class="btn btn-sm" onclick="downloadBulletin('week-34-2025')">Download PDF</button>
+                        </div>
+                        <div class="bulletin-card">
+                            <div class="bulletin-header">
+                                <h4>Week of August 12-18, 2025</h4>
+                                <span class="bulletin-status">Recent</span>
+                            </div>
+                            <ul class="bulletin-highlights">
+                                <li>Cloud security misconfigurations</li>
+                                <li>Mobile malware trends</li>
+                                <li>Incident response best practices</li>
+                            </ul>
+                            <button class="btn btn-sm" onclick="downloadBulletin('week-33-2025')">Download PDF</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive World Map -->
+                <div class="threat-map-section">
+                    <h3>Global Cyberattack Trends</h3>
+                    <div class="map-container">
+                        <div id="world-map"></div>
+                    </div>
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <span class="legend-color critical"></span>
+                            <span>Critical Threats</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color high"></span>
+                            <span>High Activity</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color medium"></span>
+                            <span>Moderate Activity</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color low"></span>
+                            <span>Low Activity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Threat Analytics Charts -->
+                <div class="threat-analytics">
+                    <h3>Threat Analytics</h3>
+                    <div class="charts-grid">
+                        <div class="chart-container">
+                            <h4>Attack Types Distribution</h4>
+                            <canvas id="attackTypesChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h4>Monthly Threat Trends</h4>
+                            <canvas id="threatTrendsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cybersecurity Portal</h4>
+                    <p>Protecting our organization through education, awareness, and rapid incident response.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="report-incident.html">Report Incident</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for security updates and alerts</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <div class="newsletter-input-group">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="contact-info">
+                        <p><strong>Emergency:</strong> +27 (123) 456-SECURITY</p>
+                        <p><strong>Email:</strong> cyberspace@company.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cyberspace Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

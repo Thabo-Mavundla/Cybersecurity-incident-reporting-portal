@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Test - All Functions</title>
+    <style>
+        body { font-family: Arial; background: #1a1a2e; color: #fff; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; background: #16213e; border-radius: 10px; }
+        .test-btn { background: #00d4ff; color: #000; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .test-btn:hover { background: #0099cc; }
+    </style>
+</head>
+<body>
+    <h1>🔒 Cybersecurity Portal - Download Function Tests</h1>
+    
+    <div class="test-section">
+        <h2>📋 Policy Downloads</h2>
+        <button class="test-btn" onclick="downloadPolicy('password-policy.pdf')">Password Policy</button>
+        <button class="test-btn" onclick="downloadPolicy('mfa-policy.pdf')">MFA Policy</button>
+        <button class="test-btn" onclick="downloadPolicy('data-classification.pdf')">Data Classification</button>
+        <button class="test-btn" onclick="downloadPolicy('incident-response.pdf')">Incident Response</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📖 Guide Downloads</h2>
+        <button class="test-btn" onclick="downloadGuide('email-security-guide.pdf')">Email Security</button>
+        <button class="test-btn" onclick="downloadGuide('remote-work-guide.pdf')">Remote Work</button>
+        <button class="test-btn" onclick="downloadGuide('mobile-security-guide.pdf')">Mobile Security</button>
+        <button class="test-btn" onclick="downloadGuide('cloud-security-guide.pdf')">Cloud Security</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📊 Infographic Downloads</h2>
+        <button class="test-btn" onclick="downloadInfographic('password-strength.png')">Password Strength</button>
+        <button class="test-btn" onclick="downloadInfographic('phishing-red-flags.png')">Phishing Red Flags</button>
+        <button class="test-btn" onclick="downloadInfographic('incident-response-steps.png')">Incident Response</button>
+        <button class="test-btn" onclick="downloadInfographic('data-classification.png')">Data Classification</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📚 Resource Downloads</h2>
+        <button class="test-btn" onclick="downloadResource('cybersecurity-best-practices-guide.pdf', 'Cybersecurity Best Practices Guide', 'PDF')">Best Practices (PDF)</button>
+        <button class="test-btn" onclick="downloadResource('incident-response-training.mp4', 'Incident Response Training Video', 'Video')">Training Video</button>
+        <button class="test-btn" onclick="downloadResource('security-assessment-tool.zip', 'Security Assessment Tool', 'Tool')">Assessment Tool</button>
+        <button class="test-btn" onclick="downloadResource('phishing-detection-cheatsheet.pdf', 'Phishing Detection Cheatsheet', 'Cheatsheet')">Phishing Cheatsheet</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>✅ Instructions</h2>
+        <p>Click any button above to test the download functionality. Each button should:</p>
+        <ul>
+            <li>Show a notification while preparing the download</li>
+            <li>Download an actual file with relevant cybersecurity content</li>
+            <li>Show a success notification when complete</li>
+        </ul>
+        <p><strong>Note:</strong> Infographics will download as HTML files for interactive viewing.</p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

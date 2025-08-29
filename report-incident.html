@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Incident - Cybersecurity Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- CDN Links for Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    
+    <!-- Leaflet.js for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { getStorage } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyAspuSU6zNZk0ZTEj8mwG4tr4r0dPhsu2o",
+            authDomain: "incident-2c0cb.firebaseapp.com",
+            projectId: "incident-2c0cb",
+            storageBucket: "incident-2c0cb.firebasestorage.app",
+            messagingSenderId: "929181151636",
+            appId: "1:929181151636:web:e72e54a54d9d1fea811f81",
+            measurementId: "G-R1KJHESXP6"
+        };
+        
+        window.firebaseApp = initializeApp(firebaseConfig);
+        window.db = getFirestore(window.firebaseApp);
+        window.storage = getStorage(window.firebaseApp);
+    </script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Cyberspace</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="threat-intelligence.html" class="nav-link">Threat Intelligence</a>
+                </li>
+                <li class="nav-item">
+                    <a href="policies.html" class="nav-link">Policies & Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="training.html" class="nav-link">Training</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="report-incident.html" class="nav-link report-incident-nav active">🚨 Report Incident</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Quick Incident Report Section -->
+        <section class="incident-section">
+            <div class="container">
+                <h1 class="section-title"><i class="fas fa-exclamation-triangle" style="color: #ff4757; animation: shake 1.5s infinite;"></i> 🚨 Report Security Incident 🚨</h1>
+                <div class="incident-form-container">
+                    <div class="incident-form">
+                        <h3><i class="fas fa-clipboard-list"></i> Advanced Incident Report</h3>
+                        <form id="incidentForm">
+                            <div class="form-group">
+                                <label for="incidentType">Incident Type</label>
+                                <select id="incidentType" required>
+                                    <option value="">Select incident type...</option>
+                                    <option value="suspicious_email">Suspicious Email</option>
+                                    <option value="malware">Malware Detection</option>
+                                    <option value="phishing">Phishing Attempt</option>
+                                    <option value="data_breach">Data Breach</option>
+                                    <option value="unauthorized_access">Unauthorized Access</option>
+                                    <option value="system_compromise">System Compromise</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reporterName">Reporter Name</label>
+                                <input type="text" id="reporterName" placeholder="Your full name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reporterEmail">Email Address</label>
+                                <input type="email" id="reporterEmail" placeholder="your.email@company.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Priority Level</label>
+                                <div class="priority-selector">
+                                    <div class="priority-option priority-low" data-priority="low" data-tooltip="Low Priority - Response within 72 hours">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span>Low</span>
+                                    </div>
+                                    <div class="priority-option priority-medium selected" data-priority="medium" data-tooltip="Medium Priority - Response within 24 hours">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <span>Medium</span>
+                                    </div>
+                                    <div class="priority-option priority-high" data-priority="high" data-tooltip="High Priority - Response within 4 hours">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <span>High</span>
+                                    </div>
+                                    <div class="priority-option priority-critical" data-priority="critical" data-tooltip="Critical Priority - Immediate response required">
+                                        <i class="fas fa-skull-crossbones"></i>
+                                        <span>Critical</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">Incident Description</label>
+                                <textarea id="description" rows="6" placeholder="Please provide detailed information about the incident..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="affectedSystems">Affected Systems/Applications</label>
+                                <input type="text" id="affectedSystems" placeholder="e.g., Email server, HR database, etc.">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                <span class="btn-text"><i class="fas fa-paper-plane"></i> Submit Report</span>
+                                <div class="spinner" id="submitSpinner" style="display: none;"></div>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- File Upload Section -->
+                    <div class="file-upload-section">
+                        <h3><i class="fas fa-cloud-upload-alt"></i> File Upload</h3>
+                        <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Upload suspicious emails, screenshots, or related files</p>
+                        
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <div class="file-upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <p><strong>Click to browse</strong> or drag and drop files here</p>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
+                                Supported formats: .eml, .msg, .pdf, .png, .jpg, .txt (Max 10MB each)
+                            </p>
+                        </div>
+                        <input type="file" id="fileInput" multiple style="display: none;" accept=".eml,.msg,.pdf,.png,.jpg,.jpeg,.txt,.doc,.docx">
+                        <div class="uploaded-files" id="uploadedFiles"></div>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <button type="button" class="btn btn-secondary" onclick="clearFiles()">
+                                <i class="fas fa-trash"></i> Clear All Files
+                            </button>
+                        </div>
+                    </div>
+                    <div class="emergency-contacts">
+                        <h3><i class="fas fa-phone-alt"></i> Emergency Contacts</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Security Hotline</strong>
+                                <span>+27 (123)-456-SECURITY</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Security Team Email</strong>
+                                <span>cyberspace@company.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Response Time</strong>
+                                <span>24/7 Monitoring</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-comments"></i>
+                            <div>
+                                <strong>Live Support</strong>
+                                <span><a href="contact.html" style="color: var(--accent-primary);">Contact Center</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ticket Preview Section -->
+                <div class="ticket-preview-container" id="ticketPreview" style="display: none;">
+                    <h3><i class="fas fa-ticket-alt"></i> Generated Ticket</h3>
+                    <div class="ticket-preview">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <div><strong>Ticket ID:</strong> <span class="ticket-id" id="ticketId"></span></div>
+                            <div class="status-indicator status-pending">⏳ Pending Review</div>
+                        </div>
+                        <div id="ticketDetails"></div>
+                    </div>
+                </div>
+                
+                <!-- Additional Resources -->
+                <div style="margin-top: var(--spacing-2xl); background: var(--secondary-bg); padding: var(--spacing-xl); border-radius: var(--border-radius-lg);">
+                    <h3 style="color: var(--accent-primary); margin-bottom: var(--spacing-lg); text-align: center;">Need Help Identifying the Incident?</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg);">
+                        <div style="background: var(--tertiary-bg); padding: var(--spacing-lg); border-radius: var(--border-radius); border-left: 4px solid var(--threat-critical);">
+                            <h4 style="color: var(--threat-critical); margin-bottom: var(--spacing-md);"><i class="fas fa-envelope"></i> Phishing</h4>
+                            <ul style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                <li>Suspicious emails asking for credentials</li>
+                                <li>Unexpected attachments or links</li>
+                                <li>Urgent requests for personal information</li>
+                            </ul>
+                        </div>
+                        <div style="background: var(--tertiary-bg); padding: var(--spacing-lg); border-radius: var(--border-radius); border-left: 4px solid var(--threat-high);">
+                            <h4 style="color: var(--threat-high); margin-bottom: var(--spacing-md);"><i class="fas fa-bug"></i> Malware</h4>
+                            <ul style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                <li>Unusual system behavior</li>
+                                <li>Unexpected pop-ups or warnings</li>
+                                <li>Files encrypted or inaccessible</li>
+                            </ul>
+                        </div>
+                        <div style="background: var(--tertiary-bg); padding: var(--spacing-lg); border-radius: var(--border-radius); border-left: 4px solid var(--threat-medium);">
+                            <h4 style="color: var(--threat-medium); margin-bottom: var(--spacing-md);"><i class="fas fa-user-times"></i> Unauthorized Access</h4>
+                            <ul style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                <li>Unknown login notifications</li>
+                                <li>Files or settings changed</li>
+                                <li>Unfamiliar network activity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cybersecurity Portal</h4>
+                    <p>Protecting our organization through education, awareness, and rapid incident response.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="report-incident.html">Report Incident</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Security Team: cyberspace@company.co.za</p>
+                    <p>Emergency: +27 (123) 456 - 7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cybersecurity Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

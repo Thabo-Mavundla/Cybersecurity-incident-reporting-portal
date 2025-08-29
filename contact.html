@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Cybersecurity Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- CDN Links for Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    
+    <!-- Leaflet.js for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Cyberspace Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="threat-intelligence.html" class="nav-link">Threat Intelligence</a>
+                </li>
+                <li class="nav-item">
+                    <a href="policies.html" class="nav-link">Policies & Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="training.html" class="nav-link">Training</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="report-incident.html" class="nav-link report-incident-nav">🚨 Report Incident</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <h1 class="section-title">IT Security Contact Center</h1>
+                <p class="section-subtitle">Your security is our priority. Get help, report incidents, or find our team.</p>
+                
+                <div class="contact-grid">
+                    <!-- Contact Form Section -->
+                    <div class="contact-form-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-envelope"></i> Security Query Form</h2>
+                            <p>Submit your security questions or report incidents</p>
+                        </div>
+                        
+                        <form id="securityForm" class="security-form" action="https://formspree.io/f/xkgzaknk" method="POST">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="_replyto" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="department">Department</label>
+                                <select id="department" name="department">
+                                    <option value="">Select Department</option>
+                                    <option value="it">IT Department</option>
+                                    <option value="hr">Human Resources</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="operations">Operations</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="priority">Priority Level *</label>
+                                <select id="priority" name="priority" required>
+                                    <option value="">Select Priority</option>
+                                    <option value="low">Low - General Question</option>
+                                    <option value="medium">Medium - Security Concern</option>
+                                    <option value="high">High - Security Incident</option>
+                                    <option value="critical">Critical - Data Breach</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <input type="text" id="subject" name="_subject" required placeholder="Brief description of your query">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Detailed Message *</label>
+                                <textarea id="message" name="message" rows="6" required placeholder="Please provide detailed information about your security query or incident"></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="confidential" name="confidential">
+                                    <span class="checkmark"></span>
+                                    Mark as confidential
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Security Query
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Emergency Hotline Section -->
+                    <div class="hotline-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-phone-alt"></i> Emergency Hotline</h2>
+                            <p>Immediate assistance for security incidents</p>
+                        </div>
+                        
+                        <div class="hotline-card">
+                            <div class="hotline-number">
+                                <i class="fas fa-phone"></i>
+                                <span>+27 (123) 456-SECURITY</span>
+                            </div>
+                            <div class="hotline-details">
+                                <div class="availability">
+                                    <i class="fas fa-clock"></i>
+                                    <span>24/7 Emergency Support</span>
+                                </div>
+                                <div class="response-time">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>Average response: 2 minutes</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline call-btn" onclick="initiateCall()">
+                                <i class="fas fa-phone"></i>
+                                Call Now
+                            </button>
+                        </div>
+
+                        <div class="additional-contacts">
+                            <h3>Additional Contact Methods</h3>
+                            <div class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <span>cyberspace@company.com</span>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-comments"></i>
+                                <span>Live Chat (Business Hours)</span>
+                                <button class="btn btn-sm chat-btn" onclick="scrollToFAQAssistant()">Start Chat</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Office Location Section -->
+                <div class="location-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-map-marker-alt"></i> Security Office Location</h2>
+                        <p>Visit our on-site security team</p>
+                    </div>
+                    
+                    <div class="location-grid">
+                        <div class="address-card">
+                            <h3>Main Security Office</h3>
+                            <div class="address">
+                                <i class="fas fa-building"></i>
+                                <span>19 Ameshoff St, Braamfontein, Johannesburg, 2001<br>
+                                Tech District, RSA</span>
+                            </div>
+                            <div class="office-hours">
+                                <i class="fas fa-clock"></i>
+                                <span>Mon-Fri: 8:00 AM - 6:00 PM<br>
+                                Weekend: Emergency Only</span>
+                            </div>
+                            <div class="map-controls">
+                                <button onclick="getDirections()" class="btn btn-outline directions-btn">
+                                    <i class="fas fa-route"></i>
+                                    Get Directions
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="contact-map" class="map-container">
+                            <!-- Leaflet map will render here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security FAQ Assistant Section -->
+                <div class="chatbot-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-robot"></i> Security FAQ Assistant</h2>
+                        <p>Get instant answers to common security questions</p>
+                    </div>
+                    
+                    <div class="chatbot-container">
+                        <div id="chatMessages" class="chat-messages">
+                            <div class="bot-message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="message-content">
+                                    <p>Hello! I'm your Security FAQ Assistant. I can help you with:</p>
+                                    <ul>
+                                        <li>Password policies</li>
+                                        <li>Security protocols</li>
+                                        <li>Incident reporting</li>
+                                        <li>Access permissions</li>
+                                        <li>VPN configuration</li>
+                                        <li>Multi-factor authentication</li>
+                                    </ul>
+                                    <p>What would you like to know about?</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-questions">
+                            <h4>Popular Questions:</h4>
+                            <div class="quick-buttons-grid">
+                                <button class="btn btn-sm quick-btn" onclick="askQuestion('password-policy')">Password Policy</button>
+                                <button class="btn btn-sm quick-btn" onclick="askQuestion('phishing')">Report Phishing</button>
+                                <button class="btn btn-sm quick-btn" onclick="askQuestion('vpn-access')">VPN Access</button>
+                                <button class="btn btn-sm quick-btn" onclick="askQuestion('data-breach')">Data Breach Protocol</button>
+                                <button class="btn btn-sm quick-btn" onclick="askQuestion('multi-factor-authentication')">MFA/2FA Help</button>
+                                <button class="btn btn-sm quick-btn" onclick="askQuestion('report-virus')">Virus/Malware Report</button>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input-container">
+                            <input type="text" id="chatInput" placeholder="Type your security question here..." class="chat-input">
+                            <button onclick="sendChatMessage()" class="btn btn-primary chat-send-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cybersecurity Portal</h4>
+                    <p>Protecting our organization through education, awareness, and rapid incident response.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="report-incident.html">Report Incident</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Security Team: cyberspace@company.com</p>
+                    <p>Emergency: +27 (123) 456-SECURITY</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cyberspace Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

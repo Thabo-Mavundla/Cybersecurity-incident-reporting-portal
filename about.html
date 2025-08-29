@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - CyberSecure Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- CDN Links for Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    
+    <!-- Leaflet.js for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Cyberspace Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link active">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="threat-intelligence.html" class="nav-link">Threat Intelligence</a>
+                </li>
+                <li class="nav-item">
+                    <a href="policies.html" class="nav-link">Policies & Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="training.html" class="nav-link">Training</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="report-incident.html" class="nav-link report-incident-nav">🚨 Report Incident</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="container">
+                <h1 class="section-title">About Our Cybersecurity Initiative</h1>
+                
+                <!-- Organization Commitment -->
+                <div class="commitment-overview">
+                    <div class="commitment-content">
+                        <h3>Our Cybersecurity Commitment</h3>
+                        <p>Our organization is dedicated to maintaining the highest standards of cybersecurity excellence. We believe that cybersecurity is not just a technical challenge, but a fundamental responsibility that requires continuous education, proactive threat management, and collaborative effort across all levels of our organization.</p>
+                        <div class="commitment-stats">
+                            <div class="stat-item">
+                                <span class="stat-number uptime-stat" data-target="99.9">99.9</span>
+                                <span class="stat-label">Uptime Security</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number monitoring-stat" data-target="24">24</span>
+                                <span class="stat-label">Monitoring</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number policies-stat" data-target="100">100</span>
+                                <span class="stat-label">Security Policies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Team Profiles -->
+                <div class="team-section">
+                    <h3>Meet Our Security Team</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <img src="assets/Treasure.jpg" alt="Treasure Mashabane" class="member-photo">
+                            </div>
+                            <h4>Treasure Mashabane</h4>
+                            <p class="member-role">Senior Security Analyst</p>
+                            <p class="member-description">Specializes in threat intelligence and incident response coordination.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <img src="assets/Thabo.jpg" alt="Thabo Mavundla" class="member-photo">
+                            </div>
+                            <h4>Thabo Mavundla</h4>
+                            <p class="member-role">Cybersecurity Engineer</p>
+                            <p class="member-description">Expert in security infrastructure and vulnerability assessment.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <img src="assets/Reba.jpg" alt="Rebafenyi Mudau" class="member-photo">
+                            </div>
+                            <h4>Rebafenyi Mudau</h4>
+                            <p class="member-role">Security Operations Specialist</p>
+                            <p class="member-description">Focuses on security monitoring and policy implementation.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <img src="assets/Ditshego2.jpg" alt="Ditshego Kgwadi" class="member-photo">
+                            </div>
+                            <h4>Ditshego Kgwadi</h4>
+                            <p class="member-role">Security Awareness Coordinator</p>
+                            <p class="member-description">Leads cybersecurity training and awareness programs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Section -->
+                <div class="timeline-section">
+                    <h3>Cybersecurity Initiative Timeline</h3>
+                    <div id="timeline-embed" style="width: 100%; height: 600px;"></div>
+                </div>
+
+                <!-- Partner Logos -->
+                <div class="partners-section">
+                    <h3>Our Security Partners</h3>
+                    <div class="partners-grid">
+                        <div class="partner-logo">
+                            <i class="fab fa-microsoft"></i>
+                            <span>Microsoft Security</span>
+                        </div>
+                        <div class="partner-logo">
+                            <i class="fab fa-aws"></i>
+                            <span>AWS Security</span>
+                        </div>
+                        <div class="partner-logo">
+                            <i class="fas fa-shield-virus"></i>
+                            <span>CrowdStrike</span>
+                        </div>
+                        <div class="partner-logo">
+                            <i class="fas fa-eye"></i>
+                            <span>SentinelOne</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cybersecurity Portal</h4>
+                    <p>Protecting our organization through education, awareness, and rapid incident response.</p>
+                    <div class="social-media">
+                        <h5>Follow Us</h5>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                        <li><a href="training.html">Training</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="report-incident.html">Report Incident</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="policies.html#security-policies">Security Policies</a></li>
+                        <li><a href="policies.html#best-practices">Best Practices</a></li>
+                        <li><a href="policies.html#training">Security Training</a></li>
+                        <li><a href="threat-intelligence.html#alerts">Threat Alerts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for security updates and alerts</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <div class="newsletter-input-group">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="contact-info">
+                        <p><strong>Emergency:</strong> +1 (555) 123-SECURITY</p>
+                        <p><strong>Email:</strong> security@company.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cyberspace Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Test</title>
+    <style>
+        body { font-family: Arial; background: #1a1a2e; color: #fff; padding: 20px; }
+        .test-btn { background: #00d4ff; color: #000; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Download Function Test</h1>
+    <button class="test-btn" onclick="testPolicyDownload()">Test Policy Download</button>
+    <button class="test-btn" onclick="testGuideDownload()">Test Guide Download</button>
+    <button class="test-btn" onclick="testInfographicDownload()">Test Infographic Download</button>
+    
+    <script src="script.js"></script>
+    <script>
+        function testPolicyDownload() {
+            downloadPolicy('password-policy.pdf');
+        }
+        
+        function testGuideDownload() {
+            downloadGuide('email-security-guide.pdf');
+        }
+        
+        function testInfographicDownload() {
+            downloadInfographic('phishing-red-flags.png');
+        }
+    </script>
+</body>
+</html>
