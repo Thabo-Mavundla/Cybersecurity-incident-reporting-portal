@@ -233,7 +233,6 @@ This cybersecurity portal provides a comprehensive solution for organizational s
 - **🎓 Training Resources**: Interactive security awareness training
 - **📈 Analytics Dashboard**: Visual threat analytics and trends
 
----
 
 **Built for cybersecurity excellence** 🛡️
 
