@@ -237,4 +237,4 @@ This cybersecurity portal provides a comprehensive solution for organizational s
 
 **Built for cybersecurity excellence** 🛡️
 
-*Empowering organizations through education, awareness, and rapid incident response.*
+Empowering organizations through education, awareness, and rapid incident response.
